@@ -1,0 +1,35 @@
+[package]
+name = "cgp-examples"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.82.0"
+readme = "README.md"
+repository = "https://github.com/marvin-hansen/cgp-examples"
+authors = ["Marvin Hansen <marvin.hansen@gmail.com>"]
+license-file = "LICENSE"
+license = "MIT"
+
+[[example]]
+name = "01-concepts"
+path = "examples/01-concepts/main.rs"
+
+
+# Optimize all crates
+[profile.release]
+opt-level = 3
+strip = true  # Automatically strip debug symbols from the binary
+lto = true    # Enable Link Time Optimization (LTO)
+codegen-units = 1 # Reduce Parallel Code Generation Units to Increase Optimization
+
+# There's a Cargo feature named profile-overrides
+# that lets you override the optimization level of dependencies.
+# https://docs.rust-embedded.org/book/unsorted/speed-vs-size.html
+[profile.release.package."*"]
+opt-level = 3
+strip = 'debuginfo'  # Automatically strip debug infos from the binary to reduce size
+codegen-units = 1 # Reduce Parallel Code Generation Units to Increase Optimization
+
+
+[dependencies]
+# https://github.com/contextgeneric/cgp
+cgp = {version = "0.2.0"}
