@@ -9,9 +9,18 @@ authors = ["Marvin Hansen <marvin.hansen@gmail.com>"]
 license-file = "LICENSE"
 license = "MIT"
 
+
 [[example]]
 name = "01-concepts"
 path = "examples/01-concepts/main.rs"
+
+[[example]]
+name = "02-blanket-trait-impl"
+path = "examples/02-blanket-trait-impl/main.rs"
+
+[[example]]
+name = "03-impl-side-deps"
+path = "examples/03-impl-side-deps/main.rs"
 
 
 # Optimize all crates
