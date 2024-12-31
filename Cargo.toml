@@ -7,7 +7,6 @@ readme = "README.md"
 repository = "https://github.com/marvin-hansen/cgp-examples"
 authors = ["Marvin Hansen <marvin.hansen@gmail.com>"]
 license-file = "LICENSE"
-license = "MIT"
 
 
 [[example]]
@@ -42,3 +41,4 @@ codegen-units = 1 # Reduce Parallel Code Generation Units to Increase Optimizati
 [dependencies]
 # https://github.com/contextgeneric/cgp
 cgp = {version = "0.2.0"}
+itertools = {version = "0.13.0"}
