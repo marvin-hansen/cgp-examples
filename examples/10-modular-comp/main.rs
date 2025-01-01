@@ -1,9 +1,9 @@
 // Single import of person component and related traits
-use crate::person_component::{Person, CanParseFromString, CanFormatToString};
+use crate::person_component::{CanFormatToString, CanParseFromString, Person};
 
+mod person_component;
 mod string_formatter_comp;
 mod string_parser_comp;
-mod person_component;
 
 // Note, even though each component resides in a separate file,
 // in practice you may want to move larger components into a single crate.

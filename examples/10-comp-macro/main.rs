@@ -15,7 +15,6 @@
 // With the repetitive pattern, it makes sense that we should be able to just define the consumer trait,
 // and make use of Rust macros to generate the remaining code.
 
-
 // Example Use
 // To illustrate how cgp_component and delegate_components can be used,
 // we revisit the code for CanFormatToString, CanParseFromString, and PersonContext from the previous chapter,

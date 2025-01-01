@@ -1,7 +1,7 @@
-use cgp::prelude::*;
-use serde::{Deserialize, Serialize};
 use crate::string_formatter_comp::{FormatAsJsonString, StringFormatterComponent};
 use crate::string_parser_comp::{ParseFromJsonString, StringParserComponent};
+use cgp::prelude::*;
+use serde::{Deserialize, Serialize};
 
 // Re-exports underlying traits, for the convenience of a single import.
 pub use crate::string_formatter_comp::CanFormatToString;
