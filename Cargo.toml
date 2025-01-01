@@ -38,8 +38,20 @@ name = "provider-delegation"
 path = "examples/09-provider-delegation/main.rs"
 
 [[example]]
-name = "10-comp-macro"
+name = "compiler-macro"
 path = "examples/10-comp-macro/main.rs"
+
+[[example]]
+name = "modular-components"
+path = "examples/10-modular-comp/main.rs"
+
+[[example]]
+name = "debugging"
+path = "examples/11-debugging/main.rs"
+
+[[example]]
+name = "associated-types"
+path = "examples/12-associated-types/main.rs"
 
 
 # Optimize all crates
@@ -59,8 +71,8 @@ codegen-units = 1 # Reduce Parallel Code Generation Units to Increase Optimizati
 
 
 [dependencies]
-# https://github.com/contextgeneric/cgp
 anyhow = {version = "1.0.70"}
+# https://github.com/contextgeneric/cgp
 cgp = {version = "0.2.0"}
 itertools = {version = "0.14.0" }
 serde = {version = "1", features = ["derive"]}
