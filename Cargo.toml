@@ -10,16 +10,32 @@ license-file = "LICENSE"
 
 
 [[example]]
-name = "01-concepts"
-path = "examples/01-concepts/main.rs"
+name = "concepts"
+path = "examples/01-04-concepts/main.rs"
 
 [[example]]
-name = "02-blanket-trait-impl"
-path = "examples/02-blanket-trait-impl/main.rs"
+name = "blanket-trait-impl"
+path = "examples/05-blanket-trait-impl/main.rs"
 
 [[example]]
-name = "03-impl-side-deps"
-path = "examples/03-impl-side-deps/main.rs"
+name = "impl-side-deps"
+path = "examples/06-impl-side-deps/main.rs"
+
+[[example]]
+name = "provider-traits"
+path = "examples/07-provider-traits/main.rs"
+
+[[example]]
+name = "linking-consumer-provider"
+path = "examples/08-linking-con-prov/main.rs"
+
+[[example]]
+name = "provider-delegation"
+path = "examples/09-provider-delegation/main.rs"
+
+[[example]]
+name = "10-comp-macro"
+path = "examples/10-comp-macro/main.rs"
 
 
 # Optimize all crates
@@ -41,4 +57,4 @@ codegen-units = 1 # Reduce Parallel Code Generation Units to Increase Optimizati
 [dependencies]
 # https://github.com/contextgeneric/cgp
 cgp = {version = "0.2.0"}
-itertools = {version = "0.13.0"}
+itertools = {version = "0.14.0" }
