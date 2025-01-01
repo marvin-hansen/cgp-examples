@@ -1,4 +1,3 @@
-
 // In the previous chapter, we have an implementation of CanGreet for Person that makes use of
 // HasName to retrieve the person's name to be printed. However, the implementation is context-specific
 // to the Person context, and cannot be reused for other contexts.
@@ -16,7 +15,9 @@ trait CanGreet {
 }
 
 impl<Context> CanGreet for Context
-    where Context: HasName {
+where
+    Context: HasName,
+{
     fn greet(&self) {
         println!("Hello, {}!", self.name());
     }
@@ -25,7 +26,9 @@ impl<Context> CanGreet for Context
 // The above example shows a blanket trait implementation of CanGreet for any Context type that implements HasName.
 // With that, contexts like Person do not need to explicitly implement CanGreet, if they already implement HasName:
 
-struct Person { name: String }
+struct Person {
+    name: String,
+}
 
 impl HasName for Person {
     fn name(&self) -> &str {
@@ -54,7 +57,9 @@ impl HasName for Person {
 // Supposed that we have a VipPerson context that we want to implement a different way of greeting the VIP person.
 // We could override the implementation as follows:
 
-struct VipPerson { name: String, /* other fields */ }
+struct VipPerson {
+    name: String, /* other fields */
+}
 
 impl CanGreet for VipPerson {
     fn greet(&self) {
@@ -69,7 +74,6 @@ impl CanGreet for VipPerson {
 //   If we try to define a custom provider for contexts that already implement HasName,
 // such as for Person, the compilation would fail:
 
-
 // impl CanGreet for Person {
 //     fn greet(&self) {
 //         println!("Hi, {}!", self.name());
@@ -83,13 +87,16 @@ impl CanGreet for VipPerson {
 // it would have resulted in inconsistencies in the compiled code,
 
 fn main() {
-
     // we call person.greet() without having a context-specific implementation of CanGreet for Person.
-    let person = Person { name: "Alice - Context Generic".to_owned() };
+    let person = Person {
+        name: "Alice - Context Generic".to_owned(),
+    };
     person.greet();
 
     // Here we have a context-specific implementation of CanGreet for VipPerson attached to the VipPerson context
-    let vip_person = VipPerson { name: "Alice - VIP".to_owned() };
+    let vip_person = VipPerson {
+        name: "Alice - VIP".to_owned(),
+    };
     vip_person.greet();
 }
 

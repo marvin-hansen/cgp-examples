@@ -199,7 +199,10 @@ pub trait CanStringlyCompareItems {
     fn stringly_equals(&self, other: &Self) -> bool;
 }
 
-impl<Context> CanStringlyCompareItems for Context where Context: CanFormatItems<> {
+impl<Context> CanStringlyCompareItems for Context
+where
+    Context: CanFormatItems,
+{
     fn stringly_equals(&self, other: &Self) -> bool {
         self.format_items() == other.format_items()
     }
@@ -263,7 +266,6 @@ fn main() {
     //
     vec![1, 2, 3].assert_equal_implies_stringly_equal(&vec![1, 2, 3]);
     vec![1, 2, 3].assert_equal_implies_stringly_equal(&vec![1, 2, 4]);
-
 }
 
 // Dependency Injection

@@ -95,7 +95,9 @@ fn main() {
     my_context.hello();
 
     //  However, the implementation below is context-specific to the Person context, and cannot be reused for other contexts.
-    let person = Person { name: "Alice".to_owned(), };
+    let person = Person {
+        name: "Alice".to_owned(),
+    };
     person.greet();
 
     // The next example shows how to define context-generic implementations of Greet that works with any context type

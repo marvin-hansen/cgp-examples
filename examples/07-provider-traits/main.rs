@@ -1,4 +1,3 @@
-
 // Provider Traits
 // https://patterns.contextgeneric.dev/provider-traits.html
 
@@ -42,7 +41,6 @@ where
 // Although having this blanket implementation is convenient, it restricts us from being able
 // to format the context in other ways, such as using Debug.
 
-
 // // Error: conflicting implementation
 // use core::fmt::Debug;
 // impl<Context> CanFormatString for Context
@@ -68,7 +66,6 @@ pub trait StringFormatter<Context> {
 // By avoiding the use of Self in provider traits, we can bypass the restrictions of Rust trait system,
 // and have multiple implementations defined. Continuing the earlier example,
 // we can define the Display and Debug implementations of CanFormatString as two separate providers of StringFormatter:
-
 
 pub struct FormatStringWithDisplay;
 
@@ -126,8 +123,11 @@ impl Display for Person {
     }
 }
 
-fn test_format_string_provider(){
-    let person = Person { first_name: "John".into(), last_name: "Smith".into() };
+fn test_format_string_provider() {
+    let person = Person {
+        first_name: "John".into(),
+        last_name: "Smith".into(),
+    };
 
     assert_eq!(
         FormatStringWithDisplay::format_string(&person),
@@ -153,7 +153,6 @@ fn test_format_string_provider(){
 // multiple providers to choose from. In the next chapter, we will look at how we can link
 // a provider trait with a consumer trait, so that we can use back the simple person.format_string()
 // syntax without needing to know which provider to choose from.
-
 
 // Beyond String Formatting
 

@@ -30,6 +30,10 @@ name = "linking-consumer-provider"
 path = "examples/08-linking-con-prov/main.rs"
 
 [[example]]
+name = "blanket-consumer-trait-implementation"
+path = "examples/08-linking-con-prov/main-blanket-impl-delegate.rs"
+
+[[example]]
 name = "provider-delegation"
 path = "examples/09-provider-delegation/main.rs"
 
