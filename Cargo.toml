@@ -75,9 +75,10 @@ codegen-units = 1 # Reduce Parallel Code Generation Units to Increase Optimizati
 
 
 [dependencies]
-anyhow = {version = "1.0.70"}
+anyhow = {version = "1"}
 # https://github.com/contextgeneric/cgp
-cgp = {version = "0.2.0"}
-itertools = {version = "0.14.0" }
+cgp = {version = "0.2"}
+datetime = {version = "0.5"}
+itertools = {version = "0.14" }
 serde = {version = "1", features = ["derive"]}
 serde_json = {version = "1"}

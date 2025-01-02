@@ -28,7 +28,8 @@ pub trait CanUsePerson:
     + PartialEq
     + CanFormatToString
     + CanParseFromString
-{}
+{
+}
 impl CanUsePerson for Person {}
 
 // Aggregate component type
