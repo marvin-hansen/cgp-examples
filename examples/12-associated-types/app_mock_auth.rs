@@ -44,9 +44,9 @@ pub mod traits {
 }
 
 pub mod impls {
+    use super::traits::*;
     use anyhow::{anyhow, Error};
     use datetime::LocalDateTime;
-    use super::traits::*;
 
     pub struct ValidateTokenIsNotExpired;
 
@@ -94,12 +94,12 @@ pub mod impls {
 }
 
 pub mod contexts {
-    use std::collections::BTreeMap;
+    use super::impls::*;
+    use super::traits::*;
     use anyhow::anyhow;
     use cgp::prelude::*;
     use datetime::LocalDateTime;
-    use super::impls::*;
-    use super::traits::*;
+    use std::collections::BTreeMap;
 
     pub struct MockApp {
         pub auth_tokens_store: BTreeMap<String, LocalDateTime>,

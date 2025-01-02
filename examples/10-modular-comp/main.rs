@@ -1,9 +1,36 @@
-// Single import of person component and related traits
-use crate::person_component::{CanFormatToString, CanParseFromString, Person};
-
-mod person_component;
 mod string_formatter_comp;
 mod string_parser_comp;
+
+use crate::string_formatter_comp::{
+    CanFormatToString, FormatAsJsonString, StringFormatterComponent,
+};
+use crate::string_parser_comp::{CanParseFromString, ParseFromJsonString, StringParserComponent};
+use cgp::prelude::*;
+use serde::{Deserialize, Serialize};
+
+// Concrete  type
+
+#[derive(Serialize, Deserialize, Debug, Eq, PartialEq)]
+pub struct Person {
+    pub first_name: String,
+    pub last_name: String,
+}
+
+// Aggregate component type
+pub struct PersonComponents;
+
+impl HasComponents for Person {
+    // Define associated type as PersonComponents
+    type Components = PersonComponents;
+}
+
+// Wire components to implementations
+delegate_components! {
+    PersonComponents {
+        StringFormatterComponent: FormatAsJsonString,
+        StringParserComponent: ParseFromJsonString,
+    }
+}
 
 // Note, even though each component resides in a separate file,
 // in practice you may want to move larger components into a single crate.

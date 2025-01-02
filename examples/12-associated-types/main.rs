@@ -428,7 +428,6 @@ where
 // Similar to the abstract Time type, we can also define a context-generic provider for ProvideAuthTokenType,
 // which implements AuthToken using String:
 
-
 pub struct UseStringAuthToken;
 
 impl<Context> ProvideAuthTokenType<Context> for UseStringAuthToken {
@@ -469,4 +468,3 @@ impl<Context> ProvideAuthTokenType<Context> for UseStringAuthToken {
 // but we are still using a concrete anyhow::Error type. In the next chapter, we will look into
 // the topic of error handling, and learn how to make use of abstract error types to better
 // handle application errors.
-
