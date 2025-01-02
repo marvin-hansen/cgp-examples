@@ -1,28 +1,39 @@
+mod string_formatter_comp;
+mod string_parser_comp;
+
 use crate::string_formatter_comp::{
     CanFormatToString, FormatAsJsonString, StringFormatterComponent,
 };
 use crate::string_parser_comp::{CanParseFromString, ParseFromJsonString, StringParserComponent};
 use cgp::prelude::*;
 use serde::{Deserialize, Serialize};
-// Unsatisfied Dependency Errors
-//
-// To demonstrate how such error would arise, we would reuse the same example Person context
-// as the previous chapter. Consider if we made a mistake and forgot to implement Serialize for Person:
+use std::fmt::Debug;
 
-// Note: We forgot to derive Serialize here. The code compiles with cargo build,
-// but fails to run due to lazy evaluation of the trait bounds.
-#[derive(Deserialize, Debug, Eq, PartialEq)]
+// Concrete  type
+#[derive(Serialize, Deserialize, Debug, Eq, PartialEq)]
 pub struct Person {
     pub first_name: String,
     pub last_name: String,
 }
 
+// Static check that statically verifies all dependencies are present in the callsite.
+#[allow(dead_code)] // Somehow clippy doesn't see its usage below.
+pub trait CanUsePerson:
+    Sized + Serialize + for<'a> Deserialize<'a> + Debug + CanFormatToString + CanParseFromString
+{
+}
+// Blanket implementation of check trait ensures the compiler enforces all checks.
+impl CanUsePerson for Person {}
+
+// Aggregate component type
 pub struct PersonComponents;
 
 impl HasComponents for Person {
+    // Define associated type as PersonComponents
     type Components = PersonComponents;
 }
 
+// Wire components to implementations
 delegate_components! {
     PersonComponents {
         StringFormatterComponent: FormatAsJsonString,
@@ -30,7 +41,7 @@ delegate_components! {
     }
 }
 
-pub(crate) fn test_dep_error() {
+fn main() {
     let person = Person {
         first_name: "John".into(),
         last_name: "Smith".into(),

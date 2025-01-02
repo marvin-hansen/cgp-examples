@@ -47,11 +47,11 @@ path = "examples/10-modular-comp/main.rs"
 
 [[example]]
 name = "debug_error"
-path = "examples/11-debugging/main_error.rs"
+path = "examples/11-debugging/debug_error/main_error.rs"
 
 [[example]]
 name = "debug_check"
-path = "examples/11-debugging/main_check.rs"
+path = "examples/11-debugging/debug_check/main_check.rs"
 
 [[example]]
 name = "associated-types"
