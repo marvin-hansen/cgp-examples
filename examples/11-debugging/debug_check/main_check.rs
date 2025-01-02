@@ -17,12 +17,18 @@ pub struct Person {
 }
 
 // Static check that statically verifies all dependencies are present in the callsite.
+// Use cargo build --example debug_check to enforce the check.
 #[allow(dead_code)] // Somehow clippy doesn't see its usage below.
 pub trait CanUsePerson:
-    Sized + Serialize + for<'a> Deserialize<'a> + Debug + CanFormatToString + CanParseFromString
-{
-}
-// Blanket implementation of check trait ensures the compiler enforces all checks.
+    Sized
+    + Serialize
+    + for<'a> Deserialize<'a>
+    + Debug
+    + Eq
+    + PartialEq
+    + CanFormatToString
+    + CanParseFromString
+{}
 impl CanUsePerson for Person {}
 
 // Aggregate component type

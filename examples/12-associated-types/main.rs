@@ -1,4 +1,3 @@
-
 // Associated Types
 // https://patterns.contextgeneric.dev/associated-types.html
 
